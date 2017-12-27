@@ -1,6 +1,9 @@
 # python-kmeans
 python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering).
 
+![results](https://github.com/tofti/python-kmeans/blob/master/examples/crime.gif "Crime Example")
+
+
 # Description
 
 # Resources
