@@ -4,7 +4,10 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 ![results](https://github.com/tofti/python-kmeans/blob/master/examples/crime.gif "Crime Example")
 
 # Description
+k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. The algorithm attempts to minimize the sum of squared distances from a cluster center, to the cluster members. This sum of squares is referred to as the "distortion" due to the methods origins in signal processing. An unfortunate choice of initial cluster centers may cause the algorithm to get stuck in a locally optimum solution that is clearly sub-optimal (see ). 
 
+A great deal of research focuses on selecting initial cluster centers, see K-Means++ and the comparative review of initialization methods in the Resources section.
+ 
 # Resources
 
 ## Basic Algorithm 
@@ -25,13 +28,13 @@ Clustering Algorithm](https://arxiv.org/pdf/1209.1960.pdf)
 ## Why not use SciPy?
 [SciPy](https://scipy.org/) has a k-means [implementation](https://docs.scipy.org/doc/scipy/reference/cluster.vq.html). The objective of this work is to build a pure python implementation for the purposes of learning, and helping others learn the k-means algorithm. Interested readers with only minimal python experience will be able to read, and step over this code without the added complexity of a library such as SciPy. It is not by any means intended for production use :)
 
-## Running the code
+# Running the code
 
-### Dependencies
-+ python v
-+ matplotlib. See [here](https://matplotlib.org/users/installing.html) for installation instructions.
+## Dependencies
++ python 3.6.3
++ matplotlib 2.1.1 - see [here](https://matplotlib.org/users/installing.html) for installation instructions.
 
-### Execution
+## Execution
 Run the code with the python interpreter: 
 
 ```python kmeans.py ./resources/<config.cfg>```
@@ -62,12 +65,12 @@ You have to specify:
  + the number of clusters to form, k;
  + the subset of attributes used in the clustering process;
  + a plot config that includes
-    + prefix for png files created during the process, if this isn't specified, images will not be produced in the working directory;
+    + prefix for png files created during the process in the working directory, if this isn't specified, images will not be produced;
     + the individual plot configurations, limited to 2 dimensions per plot.
 
  
-### Examples
+## Examples
 1. crime.sample.config uses the crime data [here](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/).
 
-### Results
+# Results
 
