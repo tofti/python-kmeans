@@ -6,12 +6,11 @@ import os
 import random
 import itertools
 import matplotlib.pyplot as mplpyplot
-import time
-import datetime
+
 
 # TODO add distortion computation
 # TODO add additional functions for centroid init'
-
+# TODO understand relationship to compression
 
 def get_header_name_to_idx_maps(headers):
     name_to_idx = {}
@@ -92,9 +91,11 @@ def rand_init_centroids(data, k, cluster_atts_idxs):
 
     for i in range(0, k):
         r = random.randint(0, len(idxs) - 1)
+        r_idx = idxs[r]
         del idxs[r]
-        datum = data[r]
+        datum = data[r_idx]
         centroids[i] = project_cluster_atts(datum, cluster_atts_idxs)
+
     return centroids
 
 
@@ -131,10 +132,7 @@ def distance_between(datum, centroid_datum, cluster_atts_idxs):
     datum_comparable_atts = project_cluster_atts(datum, cluster_atts_idxs)
     for i in range(0, len(datum_comparable_atts)):
         centroid_datum_att_value = datum_comparable_atts[i]
-        try:
-            datum_att_value = centroid_datum[i]
-        except Exception:
-            pass  # TODO bugfix for empty cluster None centroid
+        datum_att_value = centroid_datum[i]
 
         s += math.pow(abs(centroid_datum_att_value - datum_att_value), 2)
 
@@ -163,7 +161,6 @@ def update_centroids(data_rows, cluster_assignments, cluster_atts_idxs, k):
             new_centroid[cluster_atts_idx_idx] /= num_in_cluster
 
         centroids[cluster_id] = new_centroid
-
     return centroids
 
 
@@ -177,11 +174,16 @@ def plot_cluster_assignments(cluster_assignments, centroids, data_rows, cluster_
     num_of_plots = len(plots_configs)
 
     fig, subplots = mplpyplot.subplots(1, num_of_plots)
-    fig.set_size_inches(4*num_of_plots, 4, forward=True)
+    fig.set_size_inches(4 * num_of_plots, 4, forward=True)
 
     for idx in range(0, len(plots_configs)):
         plot_atts = plots_configs[idx]['plot_atts']
-        subplot = subplots[idx]
+
+        if type(subplots) is 'AxesSubplot':
+            subplot = subplots
+        else:
+            subplot = subplots[idx]
+
         for cluster_assignment in cluster_assignments:
             # cluster data - lookup first
             cluster_data = [data_rows[x] for x in cluster_assignments[cluster_assignment]]
@@ -199,7 +201,6 @@ def plot_cluster_assignments(cluster_assignments, centroids, data_rows, cluster_
             dataum_axis_y_data = [cluster_datum[y_raw_data_idx] for cluster_datum in cluster_data]
             dataum_axis_x_data, dataum_axis_y_data = sort_for_plot(dataum_axis_x_data, dataum_axis_y_data)
 
-            # subplot.set_aspect("equal")
             subplot.plot(dataum_axis_x_data, dataum_axis_y_data, marker='o', linestyle='', c=colors[cluster_assignment])
             # centroid
             centroid = centroids[cluster_assignment]
@@ -226,7 +227,6 @@ def kmeans(data, k, cluster_atts, cluster_atts_idxs, plot_config):
     data_rows = data['rows']
 
     centroids = rand_init_centroids(data_rows, k, cluster_atts_idxs)
-
     cluster_assignments = assignment_step(centroids, cluster_atts_idxs, data_rows)
 
     plot_cluster_assignments(cluster_assignments, centroids, data_rows,

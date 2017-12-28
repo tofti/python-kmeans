@@ -14,7 +14,7 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 
 + Professor Andrew Moore of CMU has some good notes [here](https://www.autonlab.org/_media/tutorials/kmeans11.pdf);
 
-+ [edureka example using crime data](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/)
++ [Edureka example](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/), using crime data
 
 ## Initialization of Clusters
 + [K-Means++](https://en.wikipedia.org/wiki/K-means%2B%2B)
