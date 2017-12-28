@@ -8,7 +8,6 @@ import itertools
 import matplotlib.pyplot as mplpyplot
 
 
-# TODO add distortion computation
 # TODO add additional functions for centroid init'
 # TODO understand relationship to compression
 
@@ -105,6 +104,8 @@ def string_to_float(v):
 
 def assignment_step(centroids, cluster_atts_idx, data_rows):
     cluster_assignment = {}
+    distortion = 0
+
     for datum_idx in range(0, len(data_rows)):
         datum = data_rows[datum_idx]
 
@@ -124,7 +125,9 @@ def assignment_step(centroids, cluster_atts_idx, data_rows):
             cluster_assignment[closest_centroid_idx] = list()
         cluster_assignment[closest_centroid_idx].append(datum_idx)
 
-    return cluster_assignment
+        distortion += closest_centroid_distance
+
+    return cluster_assignment, distortion
 
 
 def distance_between(datum, centroid_datum, cluster_atts_idxs):
@@ -167,7 +170,8 @@ def update_centroids(data_rows, cluster_assignments, cluster_atts_idxs, k):
 image_seq = 0
 
 
-def plot_cluster_assignments(cluster_assignments, centroids, data_rows, cluster_atts, cluster_atts_idxs, plot_config):
+def plot_cluster_assignments(cluster_assignments, centroids, data_rows, \
+                             cluster_atts, cluster_atts_idxs, distortion, plot_config):
     colors = {0: 'Red', 1: 'Blue', 2: 'Green', 3: 'Purple'}
 
     plots_configs = plot_config['plots_configs']
@@ -183,6 +187,8 @@ def plot_cluster_assignments(cluster_assignments, centroids, data_rows, cluster_
             subplot = subplots
         else:
             subplot = subplots[idx]
+
+        fig.suptitle('Distortion=' + str(round(distortion,3)))
 
         for cluster_assignment in cluster_assignments:
             # cluster data - lookup first
@@ -227,25 +233,25 @@ def kmeans(data, k, cluster_atts, cluster_atts_idxs, plot_config):
     data_rows = data['rows']
 
     centroids = rand_init_centroids(data_rows, k, cluster_atts_idxs)
-    cluster_assignments = assignment_step(centroids, cluster_atts_idxs, data_rows)
+    cluster_assignments, distortion = assignment_step(centroids, cluster_atts_idxs, data_rows)
 
     plot_cluster_assignments(cluster_assignments, centroids, data_rows,
-                             cluster_atts, cluster_atts_idxs, plot_config)
+                             cluster_atts, cluster_atts_idxs, distortion, plot_config)
 
     while True:
         centroids = update_centroids(data_rows, cluster_assignments, cluster_atts_idxs, k)
-        next_cluster_assignments = assignment_step(centroids, cluster_atts_idxs, data_rows)
+        next_cluster_assignments, distortion = assignment_step(centroids, cluster_atts_idxs, data_rows)
         if cluster_assignments == next_cluster_assignments:
             break
         cluster_assignments = next_cluster_assignments
 
         plot_cluster_assignments(cluster_assignments, centroids, data_rows,
-                                 cluster_atts, cluster_atts_idxs, plot_config)
+                                 cluster_atts, cluster_atts_idxs, distortion, plot_config)
 
     plot_cluster_assignments(cluster_assignments, centroids, data_rows,
-                             cluster_atts, cluster_atts_idxs, plot_config)
+                             cluster_atts, cluster_atts_idxs, distortion, plot_config)
 
-    return cluster_assignments, centroids
+    return cluster_assignments, centroids, distortion
 
 
 def sort_for_plot(x, y):
@@ -270,13 +276,14 @@ def main():
 
     plot_config = config['plot_config']
 
-    final_cluster_assignments, final_centroids = kmeans(data, k, cluster_atts, cluster_atts_idxs, plot_config)
+    final_cluster_assignments, final_centroids, distortion \
+        = kmeans(data, k, cluster_atts, cluster_atts_idxs, plot_config)
 
     data_rows = data['rows']
 
     plot_cluster_assignments(final_cluster_assignments, final_centroids,
                              data_rows, cluster_atts, cluster_atts_idxs,
-                             plot_config)
+                             distortion, plot_config)
 
 
 if __name__ == "__main__": main()
