@@ -9,6 +9,9 @@ import matplotlib.pyplot as mplpyplot
 import time
 import datetime
 
+# TODO add distortion computation
+# TODO add additional functions for centroid init'
+
 
 def get_header_name_to_idx_maps(headers):
     name_to_idx = {}
