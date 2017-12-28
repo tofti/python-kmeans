@@ -10,9 +10,9 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 ## Basic Algorithm 
 + [edureka example using crime data](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/)
 
-+ K-Means is described in [Top 10 Algorithms for Data Mining](https://atasehir.bel.tr/Content/Yuklemeler/Dokuman/Dokuman3_4.pdf);
++ K-Means as described in [Top 10 Algorithms for Data Mining](https://atasehir.bel.tr/Content/Yuklemeler/Dokuman/Dokuman3_4.pdf);
 
-+ K-Means is outlined [here](http://www.inference.org.uk/mackay/itprnn/ps/284.292.pdf);
++ K-Means is outlined in [Information Theory, Inference, and Learning Algorithms](http://www.inference.org.uk/mackay/itila/book.html), excerpt [here](http://www.inference.org.uk/mackay/itprnn/ps/284.292.pdf);
 
 + Professor Andrew Moore of CMU has some good notes [here](https://www.autonlab.org/_media/tutorials/kmeans11.pdf).
 
