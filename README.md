@@ -8,7 +8,7 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 # Resources
 
 ## Basic Algorithm 
-+ K-Means as described in [Top 10 Algorithms for Data Mining](https://atasehir.bel.tr/Content/Yuklemeler/Dokuman/Dokuman3_4.pdf);
++ K-Means is described in [Top 10 Algorithms for Data Mining](https://atasehir.bel.tr/Content/Yuklemeler/Dokuman/Dokuman3_4.pdf);
 
 + K-Means is outlined in [Information Theory, Inference, and Learning Algorithms](http://www.inference.org.uk/mackay/itila/book.html), excerpt [here](http://www.inference.org.uk/mackay/itprnn/ps/284.292.pdf);
 
@@ -17,21 +17,21 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 + [Edureka example](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/), using crime data
 
 ## Initialization of Clusters
-+ [K-Means++](https://en.wikipedia.org/wiki/K-means%2B%2B)
++ [K-Means++](https://en.wikipedia.org/wiki/K-means%2B%2B), and full paper [here](http://ilpubs.stanford.edu:8090/778/1/2006-13.pdf)
 
 + [A Comparative Study of Efficient Initialization Methods for the K-Means
 Clustering Algorithm](https://arxiv.org/pdf/1209.1960.pdf)
 
 ## Why not use SciPy?
-[SciPy](https://scipy.org/) has a k-means [implementation](https://docs.scipy.org/doc/scipy/reference/cluster.vq.html), the objective of this work is to build a bottom up pure python implementation for the purposes of learning the k-means algorithm. 
-
-My hope is others will find this implementation helpful for understanding k-means, also. It is not by any means intended for production use :)
+[SciPy](https://scipy.org/) has a k-means [implementation](https://docs.scipy.org/doc/scipy/reference/cluster.vq.html). The objective of this work is to build a pure python implementation for the purposes of learning, and helping others learn the k-means algorithm. Interested readers with only minimal python experience will be able to read, and step over this code without the added complexity of a library such as SciPy. It is not by any means intended for production use :)
 
 ## Running the code
 
-### Prerequisites
-This code depends on matplotlib. See [here](https://matplotlib.org/users/installing.html) for installation instructions.
+### Dependencies
++ python v
++ matplotlib. See [here](https://matplotlib.org/users/installing.html) for installation instructions.
 
+### Execution
 Run the code with the python interpreter: 
 
 ```python kmeans.py ./resources/<config.cfg>```
