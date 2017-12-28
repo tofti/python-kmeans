@@ -8,13 +8,13 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 # Resources
 
 ## Basic Algorithm 
-+ [edureka example using crime data](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/)
-
 + K-Means as described in [Top 10 Algorithms for Data Mining](https://atasehir.bel.tr/Content/Yuklemeler/Dokuman/Dokuman3_4.pdf);
 
 + K-Means is outlined in [Information Theory, Inference, and Learning Algorithms](http://www.inference.org.uk/mackay/itila/book.html), excerpt [here](http://www.inference.org.uk/mackay/itprnn/ps/284.292.pdf);
 
-+ Professor Andrew Moore of CMU has some good notes [here](https://www.autonlab.org/_media/tutorials/kmeans11.pdf).
++ Professor Andrew Moore of CMU has some good notes [here](https://www.autonlab.org/_media/tutorials/kmeans11.pdf);
+
++ [edureka example using crime data](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/)
 
 ## Initialization of Clusters
 + [K-Means++](https://en.wikipedia.org/wiki/K-means%2B%2B)
@@ -23,7 +23,7 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 Clustering Algorithm](https://arxiv.org/pdf/1209.1960.pdf)
 
 ## Why not use SciPy?
-[SciPy](https://scipy.org/) has a k-means [implementation](https://docs.scipy.org/doc/scipy/reference/cluster.vq.html), the objective of this work is to build a bottom up pure python implementation for the purposes of learning the k-means algoritm. 
+[SciPy](https://scipy.org/) has a k-means [implementation](https://docs.scipy.org/doc/scipy/reference/cluster.vq.html), the objective of this work is to build a bottom up pure python implementation for the purposes of learning the k-means algorithm. 
 
 My hope is others will find this implementation helpful for understanding k-means, also. It is not by any means intended for production use :)
 
