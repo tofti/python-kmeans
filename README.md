@@ -78,7 +78,7 @@ The Iris data set ([iris.config](resources/iris.config)), from [Lichman, M. (201
 ![iris_final_results](https://github.com/tofti/python-kmeans/blob/master/results/iris11.png "Iris Final")
 
 ## Basic Synthetic 2D data
-This data was generated for debugging purposes (see ([basic2d.config](resources/basic2d.config))), and illustrates the effect of having a poor choice of initial random clusters. The below results show one such case, where the initial centroid configuration prevents the algorithm from reaching the obvious cluster assignment:
+This data was generated for debugging purposes (see [basic2d.config](resources/basic2d.config)), and illustrates the effect of having a poor choice of initial random clusters. The below results demonstrate an initial centroid configuration that prevents the algorithm from reaching the obvious cluster assignment. In this case the placement of the red centroid means the blue centroid captures all of the data points in the lower left, and lower right quadrants.
 
 ![basic_init](https://github.com/tofti/python-kmeans/blob/master/results/basic_clustering0.png "Basic Initial")
 ![basic_interim](https://github.com/tofti/python-kmeans/blob/master/results/basic_clustering1.png "Basic Interim")
