@@ -72,7 +72,7 @@ You have to specify:
 # Results
 
 ## Iris Data Set
-The Iris data set ([iris.config](./iris.config)), [Lichman, M. (2013). UCI Machine Learning Repository . Irvine, CA: University of California, School of Information and Computer Science.](http://archive.ics.uci.edu/ml), is a very well known data set in the machine learning community. Here are the results of my random initial clusters:
+The Iris data set ([iris.config](./resources/iris.config)), [Lichman, M. (2013). UCI Machine Learning Repository . Irvine, CA: University of California, School of Information and Computer Science.](http://archive.ics.uci.edu/ml), is a very well known data set in the machine learning community. Here are the results of my random initial clusters:
 
 ![iris_init_results](https://github.com/tofti/python-kmeans/blob/master/results/iris0.png "Iris Initial")
 ![iris_final_results](https://github.com/tofti/python-kmeans/blob/master/results/iris11.png "Iris Final")
@@ -86,6 +86,6 @@ This data was generated for debugging purposes, and illustrates the effect of ha
 
 ## Crime
 The crime data set is from [Edureka, here](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/).
-
+    
 
 
