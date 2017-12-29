@@ -183,10 +183,10 @@ def plot_cluster_assignments(cluster_assignments, centroids, data_rows, \
     for idx in range(0, len(plots_configs)):
         plot_atts = plots_configs[idx]['plot_atts']
 
-        if type(subplots) is 'AxesSubplot':
-            subplot = subplots
-        else:
+        try:
             subplot = subplots[idx]
+        except TypeError:
+            subplot = subplots
 
         fig.suptitle('Distortion=' + str(round(distortion,3)))
 
@@ -219,6 +219,8 @@ def plot_cluster_assignments(cluster_assignments, centroids, data_rows, \
 
             subplot.set_title(x_att + ' / ' + y_att)
     fig.tight_layout()
+    fig.subplots_adjust(top=0.855)
+
     fig.show()
     global image_seq
 
