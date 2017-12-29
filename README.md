@@ -72,20 +72,20 @@ You have to specify:
 # Results
 
 ## Iris Data Set
-The Iris data set ([iris.config](./tree/master/resources/iris.config)), [Lichman, M. (2013). UCI Machine Learning Repository . Irvine, CA: University of California, School of Information and Computer Science.](http://archive.ics.uci.edu/ml), is a very well known data set in the machine learning community. Here are the results of my random initial clusters:
+The Iris data set ([iris.config](./blob/master/resources/iris.config)), [Lichman, M. (2013). UCI Machine Learning Repository . Irvine, CA: University of California, School of Information and Computer Science.](http://archive.ics.uci.edu/ml), is a very well known data set in the machine learning community. Here are the results of my random initial clusters:
 
 ![iris_init_results](https://github.com/tofti/python-kmeans/blob/master/results/iris0.png "Iris Initial")
 ![iris_final_results](https://github.com/tofti/python-kmeans/blob/master/results/iris11.png "Iris Final")
 
 ## Basic Synthetic 2D data
-This data was generated for debugging purposes (see ([basic2d.config](./tree/master/resources/basic2d.config))), and illustrates the effect of having a poor choice of initial random clusters. The below results show one such case, where the initial centroid configuration prevents the algorithm from reaching the obvious cluster assignment:
+This data was generated for debugging purposes (see ([basic2d.config](./blob/master/resources/basic2d.config))), and illustrates the effect of having a poor choice of initial random clusters. The below results show one such case, where the initial centroid configuration prevents the algorithm from reaching the obvious cluster assignment:
 
 ![basic_init](https://github.com/tofti/python-kmeans/blob/master/results/basic_clustering0.png "Basic Initial")
 ![basic_interim](https://github.com/tofti/python-kmeans/blob/master/results/basic_clustering1.png "Basic Interim")
 ![basic_final](https://github.com/tofti/python-kmeans/blob/master/results/basic_clustering2.png "Basic Interim")
 
 ## Crime
-The crime data set (([crime.config](./tree/master/resources/crime.config))) is from [Edureka, here](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/).
+The crime data set (([crime.config](./blob/master/resources/crime.config))) is from [Edureka, here](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/).
     
 
 
