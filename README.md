@@ -81,8 +81,8 @@ The Iris data set (iris.config), [Lichman, M. (2013). UCI Machine Learning Repos
 This data was generated for debugging purposes, and also illustrates the effect of having a poor choice of initial random clusters. The below results show one such case, where the initial centroid configuration prevents the algorithm from reaching the obvious cluster assignment
 
 ![basic_init](https://github.com/tofti/python-kmeans/blob/master/results/basic_clustering0.png "Basic Initial")
-![basic_interim](https://github.com/tofti/python-kmeans/blob/master/results/iris11.png "Basic Interim")
-![basic_final](https://github.com/tofti/python-kmeans/blob/master/results/iris11.png "Basic Interim")
+![basic_interim](https://github.com/tofti/python-kmeans/blob/master/results/basic_clustering1.png "Basic Interim")
+![basic_final](https://github.com/tofti/python-kmeans/blob/master/results/basic_clustering2.png "Basic Interim")
 
 
 ## Crime
