@@ -4,9 +4,9 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 ![results](https://github.com/tofti/python-kmeans/blob/master/examples/crime.gif "Crime Example")
 
 # Description
-k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. The algorithm attempts to minimize the sum of squared distances from a cluster center, to the cluster members. This sum of squares is referred to as the "distortion" due to the methods origins in signal processing. An unfortunate choice of initial cluster centers may cause the algorithm to get stuck in a locally optimum solution that is clearly sub-optimal (see ). 
+k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. In lay terms, it attempts to group together similar data points in to a specified number of groups. More specifically the algorithm attempts to minimize the sum of squared distances from a cluster center, to the cluster members. The sum of squares distances is referred to as the "distortion" due to the methods origins in signal processing. The output of the algorithm is a cluster assignment for each data point, and a final level of "distortion". 
 
-A great deal of research focuses on selecting initial cluster centers, see K-Means++ and the comparative review of initialization methods in the Resources section.
+The algorithm does not produce a provably optimal solution, and initial cluster centers may cause the algorithm to get stuck in a locally optimum solution that is clearly sub-optimal (see the basic2d example in the Results section). Much research has focused on selecting initial cluster centers, see K-Means++ and the comparative review of initialization methods in the Resources section.
  
 # Resources
 
@@ -69,8 +69,16 @@ You have to specify:
     + the individual plot configurations, limited to 2 dimensions per plot.
 
  
-## Examples
-1. crime.sample.config uses the crime data [here](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/).
-
 # Results
+
+## Iris Data Set
+The Iris data set (iris.config), [Lichman, M. (2013). UCI Machine Learning Repository . Irvine, CA: University of California, School of Information and Computer Science.](http://archive.ics.uci.edu/ml), is a very well known data set in the machine learning community. Here are the results of my random initial clusters:
+
+![iris_init_results](https://github.com/tofti/python-kmeans/blob/master/results/iris0.png "Iris Initial")
+![iris_final_results](https://github.com/tofti/python-kmeans/blob/master/results/iris11.png "Iris Initial")
+
+## Crime
+crime.sample.config uses the crime data [here](https://www.edureka.co/blog/implementing-kmeans-clustering-on-the-crime-dataset/).
+
+
 
