@@ -1,7 +1,7 @@
 # python-kmeans
 python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering).
 
-![results](https://github.com/tofti/python-kmeans/blob/master/examples/iris.gif "Iris Example")
+![results](resources/iris.gif "Iris Example")
 
 # Description
 k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. In lay terms, it attempts to group together similar data points in to a specified number of groups. More specifically the algorithm attempts to minimize the sum of squared distances from a cluster center, to the cluster members. The sum of squares distances is referred to as the "distortion" due to the methods origins in signal processing. The output of the algorithm is a cluster assignment for each data point, and a final level of "distortion". 
