@@ -4,9 +4,18 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 ![results](results/iris.gif "Iris Example")
 
 # Description
-k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. In lay terms, it attempts to group together similar data points in to a specified number of groups. More specifically the algorithm attempts to minimize the sum of squared distances from a cluster center, to the cluster members. The sum of squares distances is referred to as the "distortion" due to the methods origins in signal processing. The output of the algorithm is a cluster assignment for each data point, and a final level of "distortion". 
+k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. In lay terms, it attempts to group together similar data points in to a specified number of groups. More specifically the algorithm attempts to minimize the sum of squared distances from a cluster center, to the cluster members. The algorithm proceeds in three phases:
 
-The algorithm does not produce a provably optimal solution, and initial cluster centers may cause the algorithm to get stuck in a locally optimum solution that is clearly sub-optimal ([see the basic 2d example](#basic-synthetic-2d-data) in the [Results](#results) section). Much research has focused on selecting initial cluster centers, see [K-Means++]((https://en.wikipedia.org/wiki/K-means%2B%2B)) and the comparative review of initialization methods in the [Resources](#resources) section.
+1. Initialise clusters;
+2. assign data points to nearest cluster according to distance metric (typically Euclidean distance);
+3. update the centroids to the means of the members of the cluster;
+4. repeat steps 2 & 3 until the assignments from step 2 do not change.
+
+The output of the algorithm is a cluster assignment for each data point, and a final level of "distortion". 
+
+The algorithm does not produce a provably optimal solution, and initial cluster centers may cause the algorithm to get stuck in a locally optimum solution that is clearly sub-optimal ([see the basic 2d example](#basic-synthetic-2d-data) in the [Results](#results) section). Much research has focused on:
++ selecting initial cluster centers, see [K-Means++]((https://en.wikipedia.org/wiki/K-means%2B%2B)) and the comparative review of initialization methods in the [Resources](#resources) section;
++ distance metrics, see [here](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.403.4030&rep=rep1&type=pdf).
  
 # Resources
 
