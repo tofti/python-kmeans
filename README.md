@@ -6,9 +6,9 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 # Description
 k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. In lay terms, it attempts to group together similar data points in to a specified number of groups. More specifically the algorithm attempts to minimize the sum of squared distances from a cluster center, to the cluster members. The algorithm proceeds in three phases:
 
-1. Initialise clusters;
+1. Initialise k clusters;
 2. assign data points to nearest cluster according to distance metric (typically Euclidean distance);
-3. update the centroids to the means of the members of the cluster;
+3. update the centroids to the mean of the members of the cluster;
 4. repeat steps 2 & 3 until the assignments from step 2 do not change.
 
 The output of the algorithm is a cluster assignment for each data point, and a final level of "distortion". 
