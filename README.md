@@ -1,7 +1,7 @@
 # python-kmeans
 python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering).
 
-![results](https://github.com/tofti/python-kmeans/blob/master/examples/crime.gif "Crime Example")
+![results](https://github.com/tofti/python-kmeans/blob/master/examples/iris.gif "Iris Example")
 
 # Description
 k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. In lay terms, it attempts to group together similar data points in to a specified number of groups. More specifically the algorithm attempts to minimize the sum of squared distances from a cluster center, to the cluster members. The sum of squares distances is referred to as the "distortion" due to the methods origins in signal processing. The output of the algorithm is a cluster assignment for each data point, and a final level of "distortion". 
@@ -43,19 +43,21 @@ Where config.cfg is a plain text configuration file. The format of the config fi
 
 ``
 {
-   'data_file' : '\\resources\\crime.sample.data.csv',
-   'data_project_columns' : ['City','Murder','Assault','UrbanPop','Rape'],
-   'k' : 4,
-   'cluster_atts' : ['Murder','Assault','UrbanPop','Rape'],
+   'data_file' : '\\resources\\iris.csv',
+   'data_project_columns' : ['sepal_length','sepal_width','petal_length','petal_width','class'],
+   'k' : 3,
+   'cluster_atts' : ['sepal_length','sepal_width','petal_length','petal_width'],
    'plot_config' :
-    {'output_file_prefix' : 'crime_clustering',
+    {'output_file_prefix' : 'iris',
      'plots_configs': [
-        {'plot_atts' : ['Murder', 'Assault']},
-        {'plot_atts' : ['Murder', 'UrbanPop']},
-        {'plot_atts' : ['Murder', 'Rape']},
-        {'plot_atts' : ['Assault', 'UrbanPop']}
+        {'plot_atts' : ['sepal_length','sepal_width']},
+        {'plot_atts' : ['sepal_length','petal_length']},
+        {'plot_atts' : ['sepal_length','petal_width']},
+        {'plot_atts' : ['sepal_width','petal_length']},
+        {'plot_atts' : ['sepal_width','petal_width']},
+        {'plot_atts' : ['sepal_width','petal_width']}
      ]
-   },
+   }
 }
 ``
 
