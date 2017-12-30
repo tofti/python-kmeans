@@ -13,9 +13,11 @@ k-means attempts to identify a user specified k(<N) number of clusters from a se
 
 The output of the algorithm is a cluster assignment for each data point, and a final level of "distortion". 
 
-The algorithm does not produce a provably optimal solution, and initial cluster centers may cause the algorithm to get stuck in a locally optimum solution that is clearly sub-optimal ([see the basic 2d example](#basic-synthetic-2d-data) in the [Results](#results) section). Much research has focused on:
+The algorithm does not produce a provably optimal solution, and initial cluster centers may cause the algorithm to get stuck in a locally optimum solution that is clearly sub-optimal ([see the basic 2d example](#basic-synthetic-2d-data) in the [Results](#results) section). 
+
+Much research has focused on:
 + selecting initial cluster centers, see [K-Means++]((https://en.wikipedia.org/wiki/K-means%2B%2B)) and the comparative review of initialization methods in the [Resources](#resources) section;
-+ distance metrics, see [here](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.403.4030&rep=rep1&type=pdf).
++ and distance metrics, i.e. using measures other than Euclidean see [here](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.403.4030&rep=rep1&type=pdf).
  
 # Resources
 
