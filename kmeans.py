@@ -203,7 +203,7 @@ def update_centroids(data_rows, cluster_assignments, cluster_atts_idxs, k):
 image_seq = 0
 
 
-def plot_cluster_assignments(cluster_assignments, centroids, data_rows, \
+def plot_cluster_assignments(cluster_assignments, centroids, data_rows,
                              cluster_atts, cluster_atts_idxs, distortion, plot_config):
     colors = {0: 'Red', 1: 'Blue', 2: 'Green', 3: 'Purple'}
 
