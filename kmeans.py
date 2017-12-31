@@ -8,7 +8,6 @@ import itertools
 import matplotlib.pyplot as mplpyplot
 
 
-# TODO add additional functions for centroid init'
 # TODO understand relationship to compression
 
 def get_header_name_to_idx_maps(headers):
@@ -83,16 +82,60 @@ def project_cluster_atts(datum, cluster_atts_idxs):
     return [datum[x] for x in cluster_atts_idxs]
 
 
-def rand_init_centroids(data, k, cluster_atts_idxs):
+def find_closest_centroid(centroids, cluster_atts_idx, datum):
+    closest_centroid_idx = None
+    closest_centroid_distance = None
+    for centroid_idx in range(0, len(centroids)):
+        centroid_datum = centroids[centroid_idx]
+        if None is centroid_datum:
+            continue
+
+        distance = distance_between(datum, centroid_datum, cluster_atts_idx)
+
+        if closest_centroid_distance is None or distance < closest_centroid_distance:
+            closest_centroid_distance = distance
+            closest_centroid_idx = centroid_idx
+
+    return closest_centroid_distance, closest_centroid_idx
+
+
+def kmeans_plus_plus(data_rows, k, cluster_atts_idxs):
     centroids = list(itertools.repeat(None, k))
 
-    idxs = list(range(0, len(data)))
+    r = random.randint(0, len(data_rows) - 1)
+    centroids[0] = project_cluster_atts(data_rows[r], cluster_atts_idxs)
+
+    for i in range(1, k):
+        d = []
+        sum_of_squared_distances = 0
+        for datum_idx in range(0, len(data_rows)):
+            datum = data_rows[datum_idx]
+            closest_centroid_distance, closest_centroid_idx = find_closest_centroid(centroids, cluster_atts_idxs, datum)
+            d.append([datum_idx, math.pow(closest_centroid_distance, 2)])
+            sum_of_squared_distances += math.pow(closest_centroid_distance, 2)
+
+        r = random.random()
+
+        accumulator = 0
+        s_idx = -1
+        while accumulator < r:
+            s_idx = s_idx + 1
+            accumulator += d[s_idx][1] / sum_of_squared_distances
+
+        centroids[i] = project_cluster_atts(data_rows[d[s_idx][0]], cluster_atts_idxs)
+    return centroids
+
+
+def rand_init_centroids(data_rows, k, cluster_atts_idxs):
+    centroids = list(itertools.repeat(None, k))
+
+    idxs = list(range(0, len(data_rows)))
 
     for i in range(0, k):
         r = random.randint(0, len(idxs) - 1)
         r_idx = idxs[r]
         del idxs[r]
-        datum = data[r_idx]
+        datum = data_rows[r_idx]
         centroids[i] = project_cluster_atts(datum, cluster_atts_idxs)
 
     return centroids
@@ -109,17 +152,7 @@ def assignment_step(centroids, cluster_atts_idx, data_rows):
     for datum_idx in range(0, len(data_rows)):
         datum = data_rows[datum_idx]
 
-        closest_centroid_idx = None
-        closest_centroid_distance = None
-
-        for centroid_idx in range(0, len(centroids)):
-            centroid_datum = centroids[centroid_idx]
-
-            distance = distance_between(datum, centroid_datum, cluster_atts_idx)
-
-            if closest_centroid_distance is None or distance < closest_centroid_distance:
-                closest_centroid_distance = distance
-                closest_centroid_idx = centroid_idx
+        closest_centroid_distance, closest_centroid_idx = find_closest_centroid(centroids, cluster_atts_idx, datum)
 
         if closest_centroid_idx not in cluster_assignment:
             cluster_assignment[closest_centroid_idx] = list()
@@ -188,7 +221,7 @@ def plot_cluster_assignments(cluster_assignments, centroids, data_rows, \
         except TypeError:
             subplot = subplots
 
-        fig.suptitle('Distortion=' + str(round(distortion,3)))
+        fig.suptitle('Distortion=' + str(round(distortion, 3)))
 
         for cluster_assignment in cluster_assignments:
             # cluster data - lookup first
@@ -230,11 +263,11 @@ def plot_cluster_assignments(cluster_assignments, centroids, data_rows, \
     mplpyplot.close(fig)
 
 
-def kmeans(data, k, cluster_atts, cluster_atts_idxs, plot_config):
+def kmeans(data, k, cluster_atts, cluster_atts_idxs, init_func, plot_config):
     # select initial centroids
     data_rows = data['rows']
 
-    centroids = rand_init_centroids(data_rows, k, cluster_atts_idxs)
+    centroids = init_func(data_rows, k, cluster_atts_idxs)
     cluster_assignments, distortion = assignment_step(centroids, cluster_atts_idxs, data_rows)
 
     plot_cluster_assignments(cluster_assignments, centroids, data_rows,
@@ -270,7 +303,6 @@ def main():
 
     data = load_csv_to_header_data(config['data_file'])
     data = project_columns(data, config['data_project_columns'])
-    print(data)
 
     k = config['k']
     cluster_atts = config['cluster_atts']
@@ -278,8 +310,13 @@ def main():
 
     plot_config = config['plot_config']
 
+    if 'init_cluster_func' in config:
+        init_func = globals()[config['init_cluster_func']]
+    else:
+        init_func = globals()['rand_init_centroids']
+
     final_cluster_assignments, final_centroids, distortion \
-        = kmeans(data, k, cluster_atts, cluster_atts_idxs, plot_config)
+        = kmeans(data, k, cluster_atts, cluster_atts_idxs, init_func, plot_config)
 
     data_rows = data['rows']
 
