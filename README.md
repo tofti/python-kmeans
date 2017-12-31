@@ -18,7 +18,7 @@ Much research has focused on:
 + and distance metrics, i.e. using measures other than Euclidean see [here](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.403.4030&rep=rep1&type=pdf).
 
 ## K-Means++
-This implementation of k-means includes an implementation of the k-means++ centroid initialization algorithm. Rather than initialize random centroids in step 1 (see above), k-means++ probabilistically spreads out the initial centroids to avoid poor initial configuration:
+This implementation of k-means includes an implementation of the k-means++ centroid initialization algorithm. Rather than initialize random centroids in step 1 above, k-means++ probabilistically spreads out the initial centroids to avoid poor initial configuration:
 
 1. Choose first centroid randomly.
 2. For each data point x, compute the distance d(x), from x to the nearest centroid  that has already been chosen.
