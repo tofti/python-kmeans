@@ -4,7 +4,7 @@ python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-me
 ![results](results/iris.gif "Iris Example")
 
 # Description
-k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. The algortithm proceeds by attempting to minimize the sum of squared distances from a cluster center, to the cluster members. The canonical algorithm proceeds in three phases:
+k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. The algorithm proceeds by attempting to minimize the sum of squared distances from a cluster center, to the cluster members. The canonical algorithm proceeds in three phases:
 
 1. Initialise k random centroids (cluster centers);
 2. assign data points to nearest cluster according to distance metric (typically Euclidean distance);
