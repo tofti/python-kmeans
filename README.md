@@ -1,7 +1,6 @@
 # python-kmeans
 python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering). k-means is an [unsupervised learning](https://en.wikipedia.org/wiki/Unsupervised_learning) technique that attempts to group together similar data points in to a user specified number of groups. The below example shows the progression of clusters for the [Iris data set](http://archive.ics.uci.edu/ml) using the k-means++ centroid initialization algorithm.
 
-# magick -loop 0 -delay 100 iris*png iris.gif
 ![results](results/iris.gif "Iris Example")
 
 # Description
