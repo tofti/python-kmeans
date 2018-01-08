@@ -1,6 +1,7 @@
 # python-kmeans
 python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering).
 
+# magick -loop 0 -delay 100 iris*png iris.gif
 ![results](results/iris.gif "Iris Example")
 
 # Description
