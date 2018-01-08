@@ -1,11 +1,11 @@
 # python-kmeans
-python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering).
+python implementation of [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering). k-means is an [unsupervised learning](https://en.wikipedia.org/wiki/Unsupervised_learning) technique that attempts to group together similar data points in to a user specified number of groups. The below example shows the progression of clusters for the [Iris data set](http://archive.ics.uci.edu/ml) using the k-means++ centroid initialization algorithm.
 
 # magick -loop 0 -delay 100 iris*png iris.gif
 ![results](results/iris.gif "Iris Example")
 
 # Description
-k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. In lay terms, it attempts to group together similar data points in to a specified number of groups. More specifically the algorithm attempts to minimize the sum of squared distances from a cluster center, to the cluster members. The canonical algorithm proceeds in three phases:
+k-means attempts to identify a user specified k(<N) number of clusters from a set of N d-dimensional real valued vectors. The algorithm proceeds by attempting to minimize the sum of squared distances from a cluster center, to the cluster members. The canonical algorithm proceeds in three phases:
 
 1. Initialise k random centroids (cluster centers);
 2. assign data points to nearest cluster according to distance metric (typically Euclidean distance);
@@ -19,15 +19,15 @@ Much research has focused on:
 + computing distances, i.e. using measures other than Euclidean see [here](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.403.4030&rep=rep1&type=pdf).
 
 ## K-Means++
-Rather than initialize random centroids as in step 1 above, k-means++ probabilistically spreads out the initial centroids to avoid poor initial configuration:
+Rather than initialize random centroids as in step 1 above, k-means++ probabilistically spreads out the initial centroids to avoid poor initial configuration, the algorithm is:
 
 1. Choose first centroid randomly.
 2. For each data point x, compute the distance d(x), from x to the nearest centroid that has already been chosen.
 3. Select a data point to be the next centroid using a weighted probability proportional to d(x)2. 
 
-This technique gives favor to data points which are not near another initial clusters, and  is reminiscent of [roulette wheel (or fitness proportionate) selection](https://en.wikipedia.org/wiki/Fitness_proportionate_selection) that is used in genetic algorithms.
-# Resources
+This technique gives favor to data points which are not near another initial centroids, and uses a selection policy that is reminiscent of [roulette wheel (or fitness proportionate) selection](https://en.wikipedia.org/wiki/Fitness_proportionate_selection) that is often used in genetic algorithms.
 
+# Resources
 ## Basic Algorithm 
 + K-Means is described in [Top 10 Algorithms for Data Mining](https://atasehir.bel.tr/Content/Yuklemeler/Dokuman/Dokuman3_4.pdf);
 
@@ -43,11 +43,10 @@ This technique gives favor to data points which are not near another initial clu
 + [A Comparative Study of Efficient Initialization Methods for the K-Means
 Clustering Algorithm](https://arxiv.org/pdf/1209.1960.pdf)
 
-## Why not use SciPy?
+# Why not use SciPy?
 [SciPy](https://scipy.org/) has a k-means [implementation](https://docs.scipy.org/doc/scipy/reference/cluster.vq.html). The objective of this work is to build a pure python implementation for the purposes of learning, and helping others learn the k-means algorithm. Interested readers with only minimal python experience will be able to read, and step over this code without the added complexity of a library such as SciPy. It is not by any means intended for production use :)
 
 # Running the code
-
 ## Dependencies
 + python 3.6.3
 + matplotlib 2.1.1 - see [here](https://matplotlib.org/users/installing.html) for installation instructions.
@@ -85,12 +84,11 @@ You have to specify:
  + a subset of fields to project from the file;
  + the number of clusters to form, k;
  + the subset of attributes used in the clustering process;
- + optionally specify an initial cluster func (default='rand_init_centroids'), interested authors made add their own to the code and specify it here
+ + optionally specify an initial cluster func (default='rand_init_centroids'), interested authors made add their own to the code and specify it here;
  + a plot config that includes
     + prefix for png files created during the process in the working directory, if this isn't specified, images will not be produced;
     + the individual plot configurations, limited to 2 dimensions per plot.
 
- 
 # Results
 
 ## Iris Data Set
