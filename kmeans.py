@@ -30,8 +30,8 @@ def replace_str_with_float(list_of_list):
 
 
 def load_csv_to_header_data(filename):
-    path = os.path.normpath(os.getcwd() + filename)
-    fs = csv.reader(open(path))
+    fpath = os.path.join(os.getcwd(), filename)
+    fs = csv.reader(open(fpath, newline='\n'))
     all_row = []
     for r in fs:
         all_row.append(r)
