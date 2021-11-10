@@ -35,19 +35,15 @@ def load_csv_to_header_data(filename):
     all_row = []
     for r in fs:
         all_row.append(r)
-
     headers = all_row[0]
     idx_to_name, name_to_idx = get_header_name_to_idx_maps(headers)
-
     data = {
         'header': headers,
         'rows': all_row[1:],
         'name_to_idx': name_to_idx,
         'idx_to_name': idx_to_name
     }
-
     replace_str_with_float(data['rows'])
-
     return data
 
 
@@ -314,15 +310,13 @@ def main():
         init_func = globals()[config['init_cluster_func']]
     else:
         init_func = globals()['rand_init_centroids']
-
     final_cluster_assignments, final_centroids, distortion \
         = kmeans(data, k, cluster_atts, cluster_atts_idxs, init_func, plot_config)
-
     data_rows = data['rows']
-
     plot_cluster_assignments(final_cluster_assignments, final_centroids,
                              data_rows, cluster_atts, cluster_atts_idxs,
                              distortion, plot_config)
 
 
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    main()
